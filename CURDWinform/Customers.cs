@@ -13,8 +13,7 @@ namespace CURDWinform
 {
     public partial class Customer : Form
     {
-        string constr = @"Data Source=DESKTOP-NHH\SQLEXPRESS;Initial Catalog=CURD;Integrated Security=True; TrustServerCertificate=True";
-
+        string constr = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security = True";
         public Customer()
         {
             InitializeComponent();
@@ -44,7 +43,7 @@ namespace CURDWinform
         {
             // Kiểm tra Tag có null không trước khi gọi ToString()
             string id = btnNhap.Tag != null ? btnNhap.Tag.ToString() : string.Empty;
-            string procedureName = string.IsNullOrEmpty(id) ? "spKH_insert" : "spKH_update";
+            string procedureName = string.IsNullOrEmpty(id) ? "dbo.spKH_insert" : "dbo.spKH_update";
 
             using (SqlConnection cnn = new SqlConnection(constr))
             {
